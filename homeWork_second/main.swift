@@ -87,6 +87,34 @@ func powerEvenNumbers (_ array: [Int]) -> [Int] {
     return newArray
 }
 
+/// Delete even numbers from array
+/// - Parameter array: array of `Int`
+/// - Returns: new array of odd `Int`
+func deleteEvenNumbers (_ array: [Int]) -> [Int] {
+    var array = array
+    var i = array.count - 1
+    while i >= 0 {
+        if array[i] % 2 == 0 {
+            array.remove(at: i)
+        }
+        i -= 1
+    }
+    return array
+}
+
+/// Create new array contained numbers bigger then 50
+/// - Parameter array: original array of `Int`
+/// - Returns: new array of `Int` bigger then 50
+func extractNumbersBiggerThen50 (_ array: [Int]) -> [Int] {
+    var newArray: [Int] = []
+    for element in array {
+        if element > 50 {
+            newArray.append(element)
+        }
+    }
+    return newArray
+}
+
 // Заполнить массив сотней элементов
 // let array = createArrayWithRandomeInt(100)
 
@@ -116,3 +144,15 @@ func powerEvenNumbers (_ array: [Int]) -> [Int] {
 // let newArray = powerEvenNumbers(array)
 // print(array)
 // print(newArray)
+
+// Удалить четные числа из массива используя цикл while двигаясь от конца массива к началу
+//let arra = createArrayWithRandomeInt(10)
+//print(arra)
+//let newArray = deleteEvenNumbers(arra)
+//print(newArray)
+
+// Cформировать новый массив из тех элементов старого, которые меньше 50
+let array = createArrayWithRandomeInt(10)
+print(array)
+let newArray = extractNumbersBiggerThen50(array)
+print(newArray)
