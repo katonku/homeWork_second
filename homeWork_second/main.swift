@@ -115,6 +115,78 @@ func extractNumbersBiggerThen50 (_ array: [Int]) -> [Int] {
     return newArray
 }
 
+/// Sort array deccending
+/// - Parameter array: original array of `Int`
+/// - Returns: new descending order array of `Int`
+func sortArrayDescending (_ array: [Int]) -> [Int] {
+    var array = array
+    for i in 0..<array.count {
+        for j in i+1..<array.count {
+            if array[i] > array[j] {
+                let temp = array[i]
+                array[i] = array[j]
+                array[j] = temp
+            }
+        }
+    }
+    return array
+}
+
+/// Find middle element in array of `Int`
+/// - Parameter array: original array of `Int`
+/// - Returns: array with one middle element if original array has even count of element, otherwise array with two elements
+func findMiddleElement (_ array: [Int]) -> [Int] {
+    var middleEelements: [Int] = []
+    let midElementIndex = array.count / 2
+    middleEelements.append(array[midElementIndex])
+    if array.count % 2 == 0 {
+        middleEelements.append(array[midElementIndex - 1])
+    }
+    
+    return middleEelements
+}
+
+/// sort array of `Int` descending by using bubble algorythm
+/// - Parameter array: original array of `Int`
+/// - Returns: new descending order array of `Int`
+func sortArrayDescendingBubble (_ array: [Int]) -> [Int] {
+    var array = array
+    for i in 0..<array.count {
+        for j in 0..<(array.count-i-1) {
+            if array[j] < array[j+1] {
+                array.swapAt(j, j+1)
+            }
+        }
+    }
+    return array
+}
+
+/// Sort two original arrays by two new arrays: one for even numbers, one for odd numbers
+/// - Parameters:
+///   - arrayA: original array of `Int`
+///   - arrayB: original array of `Int`
+/// - Returns: array of two arrays: first with even numbers, second with odd numbers
+func sortTwoArreysByEvenAndOdd (_ arrayA: [Int], _ arrayB: [Int]) -> [[Int]]{
+    var evenArray: [Int] = []
+    var oddArray: [Int] = []
+
+    var i = 0
+    while i < arrayA.count {
+        let element = arrayA[i]
+        element % 2 == 0 ? evenArray.append(element) : oddArray.append(element)
+        i += 1
+    }
+    
+    var j = 0
+    while j < arrayB.count {
+        let element = arrayB[j]
+        element % 2 == 0 ? evenArray.append(element) : oddArray.append(element)
+        j += 1
+    }
+    
+    return [evenArray, oddArray]
+}
+
 // Заполнить массив сотней элементов
 // let array = createArrayWithRandomeInt(100)
 
@@ -152,7 +224,36 @@ func extractNumbersBiggerThen50 (_ array: [Int]) -> [Int] {
 //print(newArray)
 
 // Cформировать новый массив из тех элементов старого, которые меньше 50
-let array = createArrayWithRandomeInt(10)
-print(array)
-let newArray = extractNumbersBiggerThen50(array)
-print(newArray)
+// let array = createArrayWithRandomeInt(10)
+// print(array)
+// let newArray = extractNumbersBiggerThen50(array)
+// print(newArray)
+
+// Отсортировать массив по возрастанию
+// let array = createArrayWithRandomeInt(10)
+// print(array)
+// let sortedArray = sortArrayDescending(array)
+// print(sortedArray)
+
+// Найти такой элемент массива, что бы половина значений была больше него, а половина меньше. Например в массиве [61, 48, 83, 66, 76, 51, 67, 48, 47, 73] это 61 или 66. Возможно два варианта, так как массив содержит четное количество элементов.
+// var array = createArrayWithRandomeInt(4)
+// print(array)
+// var newArray = sortArrayDescending(array)
+// print(newArray)
+// let middleElement = findMiddleElement(newArray)
+// print(middleElement)
+
+// Отсортировать массив по убыванию используя алгоритм сортировки пузырьком
+//let array = createArrayWithRandomeInt(5)
+//print(array)
+//let newArray = sortArrayDescendingBubble(array)
+//print(newArray)
+
+// Дано два массива случайно длинны, со случайными числами. Написать функцию, которая с использованием while чётные числа записывает из 2х массивов записывает в первый массив, а нечётные - во второй
+//let arrayA = createArrayWithRandomeInt(4)
+//print(arrayA)
+//let arrayB = createArrayWithRandomeInt(6)
+//print(arrayB)
+//let result = sortTwoArreysByEvenAndOdd(arrayA, arrayB)
+//print(result[0])
+//print(result[1])
